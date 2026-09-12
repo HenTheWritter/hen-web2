@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "pokedex")
-public class Pokedex {
+public class Pokemon {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,10 +18,10 @@ public class Pokedex {
     private String tipo;
     private Integer numero;
 
-    public Pokedex() {
+    public Pokemon() {
     }
 
-    public Pokedex(Long id, String nome, String descricao, String tipo, Integer numero) {
+    public Pokemon(Long id, String nome, String descricao, String tipo, Integer numero) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;

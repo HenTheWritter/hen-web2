@@ -13,18 +13,18 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:5173")
-public class PokedexController {
+public class UsuarioController {
 
     @Autowired
-    private PokedexRepository pokedexRepository;
+    private UsuarioRepository usuarioRepository;
 
-    @GetMapping("/pokemon")
-    public List<Pokemon> getAllPokemon() {
-        return pokedexRepository.findAll();
+    @GetMapping("/usuarios")
+    public List<Usuario> getAllUsuarios() {
+        return usuarioRepository.findAll();
     }
 
-    @PostMapping("/pokemon")
-    public Pokemon createPokemon(@RequestBody Pokemon pokemon) {
-        return pokedexRepository.save(pokemon);
+    @PostMapping("/usuarios")
+    public Usuario createUsuario(@RequestBody Usuario usuario) {
+        return usuarioRepository.save(usuario);
     }
 }
