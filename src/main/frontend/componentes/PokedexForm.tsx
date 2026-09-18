@@ -1,18 +1,15 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import type { Pokemon } from "../types/Pokemon";
-import PokemonItem from "./PokemonItem";
 import PokedexForm from "./PokedexForm";
 
-function PokemonList() {
-  const [pokemon, setPokemon] = useState<Pokemon[]>([]);
+function PokedexList() {
+  const [pokemons, setPokemon] = useState<Pokemon[]>([]);
   const [editando, setEditando] = useState<Pokemon | null>(null);
 
   function carregarPokemon() {
     api.get<Pokemon[]>("/pokemon").then((resposta) => {
       setPokemon(resposta.data);
-    }).catch((erro) => {
-      console.error("Erro ao buscar a Pokédex:", erro);
     });
   }
 
@@ -23,13 +20,13 @@ function PokemonList() {
   async function excluir(id: number) {
     if (window.confirm("Tem certeza que deseja excluir este Pokémon?")) {
       await api.delete(`/pokemon/${id}`);
-      carregarPokemon();
+      carregarPokemon(); 
     }
   }
 
   return (
     <div>
-      <h2>Minha Pokédex</h2>
+      <h2>Pokédex</h2>
       
       <PokedexForm
         key={editando?.id ?? "novo"}
@@ -41,18 +38,21 @@ function PokemonList() {
       />
 
       <ul>
-        {pokemon.map((p) => (
-          <li key={p.id} style={{ marginBottom: "15px" }}>
-            <PokemonItem pokemon={p} />
-            <div style={{ marginTop: "5px" }}>
-              <button onClick={() => setEditando(p)}>Editar</button>
-              <button 
-                onClick={() => excluir(p.id)} 
-                style={{ marginLeft: "10px", color: "red" }}
-              >
-                Excluir
-              </button>
-            </div>
+        {pokemons.map((pokemon) => (
+          <li key={pokemon.id} style={{ marginBottom: "10px" }}>
+            <strong>{pokemon.numero} - {pokemon.nome}</strong> ({pokemon.tipo})
+            <br />
+            <small>{pokemon.descricao}</small>
+            <br />
+            
+            <button onClick={() => setEditando(pokemon)}>Editar</button>
+            
+            <button 
+              onClick={() => excluir(pokemon.id)}
+              style={{ marginLeft: "5px", color: "red" }}
+            >
+              Excluir
+            </button>
           </li>
         ))}
       </ul>
@@ -60,4 +60,4 @@ function PokemonList() {
   );
 }
 
-export default PokemonList;
+export default PokedexList;
