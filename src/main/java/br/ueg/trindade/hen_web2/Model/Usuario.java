@@ -1,4 +1,4 @@
-package br.ueg.trindade.hen_web2;
+package br.ueg.trindade.hen_web2.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,6 +16,7 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    private String username;
     private Integer idade;
 
     @JsonIgnore
@@ -44,6 +45,14 @@ public class Usuario {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getSenha() {

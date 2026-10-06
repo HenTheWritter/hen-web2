@@ -1,4 +1,4 @@
-package br.ueg.trindade.hen_web2;
+package br.ueg.trindade.hen_web2.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,26 +7,22 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "pokedex")
-public class Pokemon {
+@Table(name = "permissao")
+public class Permissao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String descricao;
-    private String tipo;
-    private Integer numero;
 
-    public Pokemon() {
+    public Permissao() {
     }
 
-    public Pokemon(Long id, String nome, String descricao, String tipo, Integer numero) {
+    public Permissao(Long id, String nome, String descricao) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
-        this.tipo = tipo;
-        this.numero = numero;
     }
 
     public Long getId() {
@@ -51,22 +47,6 @@ public class Pokemon {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public Integer getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Integer numero) {
-        this.numero = numero;
     }
 } 
     

@@ -1,4 +1,4 @@
-package br.ueg.trindade.hen_web2;
+package br.ueg.trindade.hen_web2.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import br.ueg.trindade.hen_web2.Model.Permissao;
+import br.ueg.trindade.hen_web2.Repository.PermissaoRepository;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 

@@ -1,63 +1,63 @@
-import { useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import api from "../services/api";
 import type { Pokemon } from "../types/Pokemon";
-import PokedexForm from "./PokedexForm";
 
-function PokedexList() {
-  const [pokemons, setPokemon] = useState<Pokemon[]>([]);
-  const [editando, setEditando] = useState<Pokemon | null>(null);
+interface PokedexFormProps {
+  onPokemonSalva: () => void;
+  pokemonEditando?: Pokemon | null;
+}
 
-  function carregarPokemon() {
-    api.get<Pokemon[]>("/pokemon").then((resposta) => {
-      setPokemon(resposta.data);
-    });
-  }
+function PokedexForm({ onPokemonSalva, pokemonEditando }: PokedexFormProps) {
+  const [nome, setNome] = useState(pokemonEditando?.nome ?? "");
+  const [descricao, setDescricao] = useState(pokemonEditando?.descricao ?? "");
+  const [tipo, setTipo] = useState(pokemonEditando?.tipo ?? "");
+  const [numero, setNumero] = useState(pokemonEditando?.numero ?? "");
 
-  useEffect(() => {
-    carregarPokemon();
-  }, []);
+  async function handleSubmit(event: FormEvent) {
+    event.preventDefault();
 
-  async function excluir(id: number) {
-    if (window.confirm("Tem certeza que deseja excluir este Pokémon?")) {
-      await api.delete(`/pokemon/${id}`);
-      carregarPokemon(); 
+    const dados = { nome, descricao, tipo, numero };
+
+    if (pokemonEditando) {
+      await api.put(`/pokemon/${pokemonEditando.id}`, dados);
+    } else {
+      await api.post("/pokemon", dados);
     }
+
+    onPokemonSalva();
   }
 
   return (
-    <div>
-      <h2>Pokédex</h2>
-      
-      <PokedexForm
-        key={editando?.id ?? "novo"}
-        pokemonEditando={editando}
-        onPokemonSalvo={() => {
-          carregarPokemon();
-          setEditando(null);
-        }}
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={nome}
+        onChange={(e) => setNome(e.target.value)}
+        placeholder="Nome do Pokémon"
       />
-
-      <ul>
-        {pokemons.map((pokemon) => (
-          <li key={pokemon.id} style={{ marginBottom: "10px" }}>
-            <strong>{pokemon.numero} - {pokemon.nome}</strong> ({pokemon.tipo})
-            <br />
-            <small>{pokemon.descricao}</small>
-            <br />
-            
-            <button onClick={() => setEditando(pokemon)}>Editar</button>
-            
-            <button 
-              onClick={() => excluir(pokemon.id)}
-              style={{ marginLeft: "5px", color: "red" }}
-            >
-              Excluir
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
+      <input
+        type="text"
+        value={descricao}
+        onChange={(e) => setDescricao(e.target.value)}
+        placeholder="Descrição"
+      />
+      <input
+        type="text"
+        value={tipo}
+        onChange={(e) => setTipo(e.target.value)}
+        placeholder="Tipo"
+      />
+      <input
+        type="number"
+        value={numero}
+        onChange={(e) => setDescricao(e.target.value)}
+        placeholder="Número"
+      />
+      <button type="submit">
+        {pokemonEditando ? "Salvar alterações" : "Cadastrar"}
+      </button>
+    </form>
   );
 }
 
-export default PokedexList;
+export default PokedexForm;

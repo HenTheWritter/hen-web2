@@ -9,13 +9,14 @@ interface UsuarioFormProps {
 
 function UsuarioForm({ onUsuarioSalvo, usuarioEditando }: UsuarioFormProps) {
   const [nome, setNome] = useState(usuarioEditando?.nome ?? "");
+  const [username, setUsername] = useState(usuarioEditando?.username ?? "");
   const [idade, setIdade] = useState(usuarioEditando?.idade ?? "");
   const [email, setEmail] = useState(usuarioEditando?.email ?? "");
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
 
-    const dados = { nome, idade, email };
+    const dados = { nome, username, idade, email };
 
     if (usuarioEditando) {
       await api.put(`/usuarios/${usuarioEditando.id}`, dados);
@@ -32,6 +33,11 @@ function UsuarioForm({ onUsuarioSalvo, usuarioEditando }: UsuarioFormProps) {
         value={nome}
         onChange={(e) => setNome(e.target.value)}
         placeholder="Nome"
+      />
+      <input
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        placeholder="username"
       />
       <input
         value={idade}

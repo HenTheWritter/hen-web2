@@ -1,4 +1,4 @@
-package br.ueg.trindade.hen_web2;
+package br.ueg.trindade.hen_web2.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import br.ueg.trindade.hen_web2.Model.Usuario;
+import br.ueg.trindade.hen_web2.Repository.UsuarioRepository;
 
 import java.util.List;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -45,6 +48,7 @@ public class UsuarioController {
              .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
             usuario.setNome(usuarioAtualizado.getNome());
+            usuario.setUsername(usuarioAtualizado.getUsername());
             usuario.setIdade(usuarioAtualizado.getIdade());
             usuario.setEmail(usuarioAtualizado.getEmail());
 
