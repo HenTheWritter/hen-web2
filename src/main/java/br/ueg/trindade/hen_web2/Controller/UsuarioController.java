@@ -25,7 +25,7 @@ public class UsuarioController {
     private UsuarioRepository usuarioRepository;
 
     @GetMapping("/usuarios")
-    public List<Usuario> getAllUsuarios(@PathVariable Long id) {
+    public List<Usuario> getAllUsuarios() {
         return usuarioRepository.findAll();
     }
 

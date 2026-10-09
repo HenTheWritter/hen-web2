@@ -1,10 +1,7 @@
-import UsuarioList from "../componentes/UsuarioList";
+import UsuariosPage from "../pages/UsuariosPage";
+
 function App() {
-  return (
-    <div>
-      <h1>Usuários</h1>
-      <UsuarioList />
-    </div>
-  );
+  return <UsuariosPage />;
 }
+
 export default App;
