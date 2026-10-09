@@ -1,0 +1,105 @@
+.topo {
+  background: var(--vermelho);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.topo-conteudo {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.faixa {
+  height: 5px;
+  background: linear-gradient(90deg, var(--verde) 33%, var(--amarelo) 33% 66%, var(--azul) 66%);
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.marca strong {
+  color: var(--amarelo);
+}
+
+.pokebola {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  background: linear-gradient(#e3350d 46%, #1b2333 46% 54%, #fff 54%);
+  position: relative;
+  display: inline-block;
+}
+
+.pokebola::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border: 2px solid #1b2333;
+  border-radius: 50%;
+}
+
+.menu {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.menu a,
+.menu-em-breve {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 15px;
+  transition: background 0.15s;
+}
+
+.menu a:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.menu a.active {
+  background: #fff;
+  color: var(--vermelho);
+  font-weight: 600;
+}
+
+.menu-em-breve {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.conteudo {
+  flex: 1;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+.rodape {
+  text-align: center;
+  padding: 20px;
+  color: var(--texto-suave);
+  font-size: 14px;
+}

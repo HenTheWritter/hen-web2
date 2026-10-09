@@ -18,6 +18,8 @@ public class Pokemon {
     private String tipo;
     private Integer numero;
 
+    private String imagemUrl;
+
     public Pokemon() {
     }
 
@@ -67,6 +69,14 @@ public class Pokemon {
 
     public void setNumero(Integer numero) {
         this.numero = numero;
+    }
+
+    public String getImagemUrl() {
+        return imagemUrl;
+    }
+
+    public void setImagemUrl(String imagemUrl) {
+        this.imagemUrl = imagemUrl;
     }
 } 
     
