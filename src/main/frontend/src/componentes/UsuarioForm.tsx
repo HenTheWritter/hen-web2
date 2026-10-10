@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import api from "../services/api";
-import type { Usuario } from "../../types/Usuario";
+import type { Usuario } from "../types/Usuario";
 
 interface UsuarioFormProps {
   onUsuarioSalvo: () => void;

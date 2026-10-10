@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
-import type { Usuario } from "../../types/Usuario";
+import type { Usuario } from "../types/Usuario";
 import UsuarioItem from "./UsuarioItem";
 import UsuarioForm from "./UsuarioForm";
 import "./Usuarios.css";

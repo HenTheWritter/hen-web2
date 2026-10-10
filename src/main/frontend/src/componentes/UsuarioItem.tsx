@@ -1,4 +1,4 @@
-import type { Usuario } from "../../types/Usuario";
+import type { Usuario } from "../types/Usuario";
 
 interface UsuarioItemProps {
   usuario: Usuario;

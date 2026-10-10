@@ -1,8 +1,8 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import api from "../services/api";
-import { TIPOS_POKEMON } from "../../types/Pokemon";
-import type { Pokemon } from "../../types/Pokemon";
+import { TIPOS_POKEMON } from "../types/Pokemon";
+import type { Pokemon } from "../types/Pokemon";
 
 interface PokedexFormProps {
   onPokemonSalvo: () => void;

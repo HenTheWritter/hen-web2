@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
-import type { Pokemon } from "../../types/Pokemon";
+import type { Pokemon } from "../types/Pokemon";
 import PokemonItem from "./PokemonItem";
 import PokedexForm from "./PokedexForm";
 import "./Usuarios.css";
