@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { COR_TIPO } from "../../types/Pokemon";
-import type { Pokemon } from "../../types/Pokemon";
+import { COR_TIPO } from "../types/Pokemon";
+import type { Pokemon } from "../types/Pokemon";
 
 interface PokemonItemProps {
   pokemon: Pokemon;
